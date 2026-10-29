@@ -1,0 +1,23 @@
+Hosting der Zahrat-Plattform (Server + Datenbank)
+=================================================
+
+Aktuell: kostenlos
+  - Server:     Render (Gratis-Webdienst, Frankfurt)      -> render.yaml
+  - Datenbank:  Neon (Gratis-PostgreSQL, Frankfurt)       -> neon.tech
+  - Seiten:     GitHub Pages (bleibt unveraendert)
+
+Einrichtung in Kurzform
+  1. Neon: Projekt anlegen (Region Frankfurt), "Connection string" kopieren
+     (ohne "Pooled connection", also die direkte Verbindung).
+  2. Render: New -> Blueprint -> Repo waehlen. Variablen:
+       DATABASE_URL    = Neon-Connection-String
+       ADMIN_PASSWORD  = langes, sicheres Passwort (nicht "admin")
+       GITHUB_TOKEN    = optional (nur fuer Fotos/Nachrichten der oeffentlichen Seite)
+  3. Pruefen: https://zahra-123hub-almadain-api.onrender.com/healthz  ->  {"status":"ok"}
+  4. Anmelden: https://zahra-123hub.github.io/Zahra-Almadain/login/
+
+Grenzen der Gratis-Variante
+  - Nach 15 Min. ohne Zugriff schlaeft der Server ein; der erste Aufruf dauert ca. 1 Minute.
+  - Neon-Datenbank schlaeft bei Nichtnutzung ein (erster Zugriff etwas langsamer), wenig Speicher.
+  - Fuer echte Familiendaten auf einen bezahlten Plan wechseln (Render Starter + bezahlte
+    Datenbank, ca. 13 USD/Monat) und Datenschutzerklaerung/Einwilligung der Eltern klaeren.

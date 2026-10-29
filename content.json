@@ -1,0 +1,23 @@
+{
+ "settings": {
+  "announce": "",
+  "phone": "",
+  "whatsapp": "",
+  "hours": "",
+  "facebook": "https://www.facebook.com/profile.php?id=61593288236023",
+  "instagram": "https://www.instagram.com/zhrtalmdayn2026/",
+  "email": "",
+  "hideDefaultNews": false,
+  "hideDefaultGallery": false
+ },
+ "gallery": [
+  {
+   "id": "098f317ebba116ba",
+   "kind": "image",
+   "asset": "7d70d895f520e903be8d18b98f0916d5.jpg",
+   "caption": "تخفيضات",
+   "ts": 1792076167913
+  }
+ ],
+ "news": []
+}

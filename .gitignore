@@ -1,0 +1,9 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Personal data of children and staff: never commit photos or transcriptions of the paper tables
+docs/vorlagen/*
+!docs/vorlagen/README.txt

@@ -1,0 +1,45 @@
+# Free test setup: free web service on Render + free PostgreSQL on Neon (https://neon.tech).
+# Later, for real family data, switch to `plan: starter` and a paid database (see docs/hosting.txt).
+services:
+  - type: web
+    name: zahra-123hub-almadain-api
+    runtime: python
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    # The free plan has no pre-deploy command, so the (repeatable) database migration runs at every start.
+    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: GITHUB_OWNER
+        value: Zahra-123hub
+      - key: GITHUB_REPO
+        value: Zahra-Almadain
+      - key: ALLOWED_ORIGINS
+        value: https://zahra-123hub.github.io,http://127.0.0.1:8000,http://localhost:8000
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: DATABASE_URL
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      # Optional: automatic e-mail with the one-time registration link.
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      - key: PORTAL_BASE_URL
+        value: https://zahra-123hub.github.io/Zahra-Almadain
